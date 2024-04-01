@@ -23,11 +23,7 @@ android_library {
         "vendor-pixelatoms-java",
         "smartspace-proto-java",
         "guava",
-        "matchmaker-lib",
-        "touchcontext-lib",
         "googlebattery-lib",
-        "nga-lib",
-        "columbus-lib",
         "google-battery",
         "vendor.google.google_battery-V1-java",
     ],
@@ -46,7 +42,6 @@ android_app {
     name: "SystemUIGoogle",
     defaults: [
         "platform_app_defaults",
-        "SystemUI_optimized_defaults",
     ],
     static_libs: [
         "SystemUIGoogle-core",
@@ -87,34 +82,10 @@ android_app {
 
 java_library {
     name: "google-battery",
-    srcs: ["googlebaterry/src/**/*.java"],
+    srcs: ["googlebattery/src/**/*.java"],
     static_libs: [
         "vendor.google.google_battery-V1-java",
     ],
-}
-
-java_import  {
-    name: "columbus-lib",
-    sdk_version: "current",
-    jars: ["libs/columbus-lib.jar"],
-}
-
-java_import  {
-    name: "nga-lib",
-    sdk_version: "current",
-    jars: ["libs/nga-lib.jar"],
-}
-
-java_import  {
-    name: "matchmaker-lib",
-    sdk_version: "current",
-    jars: ["libs/com.google.android.apps.miphone.aiai.matchmaker.overview.jar"],
-}
-
-java_import  {
-    name: "touchcontext-lib",
-    sdk_version: "current",
-    jars: ["libs/com.google.input.jar"],
 }
 
 java_import  {
