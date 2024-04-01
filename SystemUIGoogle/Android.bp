@@ -1,0 +1,124 @@
+android_library {
+    name: "SystemUIGoogle-res",
+    manifest: "AndroidManifest.xml",
+    resource_dirs: [
+        "res",
+    ],
+    static_libs: [
+        "SystemUI-core",
+    ],
+}
+
+android_library {
+    name: "SystemUIGoogle-core",
+    srcs: [
+        "src/**/*.kt",
+        "src/**/*.java",
+        "src/**/*.aidl",
+    ],
+    static_libs: [
+        "SystemUIGoogle-res",
+        "tensorflowlite_java",
+        "android.frameworks.stats-V1-java",
+        "vendor-pixelatoms-java",
+        "smartspace-proto-java",
+        "guava",
+        "matchmaker-lib",
+        "touchcontext-lib",
+        "googlebattery-lib",
+        "nga-lib",
+        "columbus-lib",
+        "google-battery",
+        "vendor.google.google_battery-V1-java",
+    ],
+    manifest: "AndroidManifest.xml",
+
+    javacflags: ["-Adagger.fastInit=enabled"],
+    kotlincflags: ["-Xjvm-default=all"],
+
+    plugins: ["dagger2-compiler"],
+    lint: {
+        extra_check_modules: ["SystemUILintChecker"],
+    },
+}
+
+android_app {
+    name: "SystemUIGoogle",
+    defaults: [
+        "platform_app_defaults",
+        "SystemUI_optimized_defaults",
+    ],
+    static_libs: [
+        "SystemUIGoogle-core",
+    ],
+    jni_libs: ["libtensorflowlite_jni"],
+    use_embedded_native_libs: true,
+    resource_dirs: [],
+    asset_dirs: ["assets"],
+    aaptflags: [
+        "-0 .tflite",
+        "-0 .vocab",
+    ],
+
+    platform_apis: true,
+    system_ext_specific: true,
+    certificate: "platform",
+    privileged: true,
+
+    optimize: {
+        proguard_flags_files: ["proguard.flags"],
+    },
+
+    libs: [
+        "ims-common",
+    ],
+
+    javacflags: ["-Adagger.fastInit=enabled"],
+    kotlincflags: ["-Xjvm-default=all"],
+
+    dxflags: ["--multi-dex"],
+    required: [
+        "privapp_whitelist_com.android.systemui",
+    ],
+    overrides: [
+        "SystemUI",
+    ],
+}
+
+java_library {
+    name: "google-battery",
+    srcs: ["googlebaterry/src/**/*.java"],
+    static_libs: [
+        "vendor.google.google_battery-V1-java",
+    ],
+}
+
+java_import  {
+    name: "columbus-lib",
+    sdk_version: "current",
+    jars: ["libs/columbus-lib.jar"],
+}
+
+java_import  {
+    name: "nga-lib",
+    sdk_version: "current",
+    jars: ["libs/nga-lib.jar"],
+}
+
+java_import  {
+    name: "matchmaker-lib",
+    sdk_version: "current",
+    jars: ["libs/com.google.android.apps.miphone.aiai.matchmaker.overview.jar"],
+}
+
+java_import  {
+    name: "touchcontext-lib",
+    sdk_version: "current",
+    jars: ["libs/com.google.input.jar"],
+}
+
+java_import  {
+    name: "googlebattery-lib",
+    sdk_version: "current",
+    jars: ["libs/googlebattery.jar"],
+}
