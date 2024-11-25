@@ -14,7 +14,7 @@ import android.view.View;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceScreen;
 import com.android.internal.annotations.VisibleForTesting;
-import com.android.internal.util.crdroid.Utils;
+import com.android.internal.util.android.Utils;
 import com.android.settings.core.BasePreferenceController;
 import com.android.settingslib.core.lifecycle.LifecycleObserver;
 import com.android.settingslib.core.lifecycle.events.OnPause;

@@ -68,7 +68,6 @@ class ThemeOverlayControllerGoogle @Inject constructor(
     keyguardTransitionInteractor: KeyguardTransitionInteractor,
     uiModeManager: UiModeManager,
     activityManager: ActivityManager,
-    configurationController: ConfigurationController,
     tunerService: TunerService,
     @param:Main private val mainResources: Resources,
     private val systemPropertiesHelper: SystemPropertiesHelper
@@ -93,17 +92,10 @@ class ThemeOverlayControllerGoogle @Inject constructor(
     keyguardTransitionInteractor,
     uiModeManager,
     activityManager,
-    configurationController,
     tunerService
 ) {
     init {
-        configurationController.addCallback(object :
-            ConfigurationController.ConfigurationListener {
-            override fun onThemeChanged() {
-                setBootColorSystemProps()
-            }
-        })
-
+        setBootColorSystemProps()
         val bootColors = getBootColors()
         for (i in bootColors.indices) {
             Log.d("ThemeOverlayController", "Boot animation colors ${i + 1}: ${bootColors[i]}")
