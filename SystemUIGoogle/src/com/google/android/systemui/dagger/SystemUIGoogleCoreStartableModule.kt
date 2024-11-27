@@ -359,6 +359,12 @@ abstract class SystemUIGoogleCoreStartableModule {
     @ClassKey(GoogleServices::class)
     abstract fun bindGoogleServices(sysui: GoogleServices): CoreStartable
 
+    /** Inject into KeyguardSmartspaceStartable. */
+    @Binds
+    @IntoMap
+    @ClassKey(KeyguardSmartspaceStartable::class)
+    abstract fun bindKeyguardSmartspaceStartable(sysui: KeyguardSmartspaceStartable): CoreStartable
+
     /** Inject into SmartPixelsReceiver.  */
     @Binds
     @IntoMap
