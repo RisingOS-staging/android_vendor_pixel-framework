@@ -52,7 +52,6 @@ import com.android.systemui.media.muteawait.MediaMuteAwaitConnectionCli;
 import com.android.systemui.media.nearby.NearbyMediaDevicesManager;
 import com.android.systemui.navigationbar.gestural.GestureModule;
 import com.android.systemui.navigationbar.NavigationBarControllerModule;
-import com.android.systemui.plugins.BcSmartspaceDataPlugin;
 import com.android.systemui.plugins.qs.QSFactory;
 import com.android.systemui.plugins.statusbar.StatusBarStateController;
 import com.android.systemui.power.dagger.PowerModule;
@@ -134,8 +133,6 @@ import com.google.android.systemui.qs.tileimpl.QSFactoryImplGoogle;
 import com.google.android.systemui.qs.tileimpl.GoogleQSModule;
 import com.google.android.systemui.reversecharging.ReverseChargingController;
 import com.google.android.systemui.reversecharging.dagger.ReverseChargingModule;
-import com.google.android.systemui.smartspace.BcSmartspaceDataProvider;
-import com.google.android.systemui.smartspace.dagger.SmartspaceGoogleModule;
 import com.google.android.systemui.statusbar.dagger.StartCentralSurfacesGoogleModule;
 import com.google.android.systemui.statusbar.KeyguardIndicationControllerGoogle;
 import com.google.android.systemui.statusbar.policy.BatteryControllerImplGoogle;
@@ -183,7 +180,6 @@ import dagger.Lazy;
         QSModuleGoogle.class,
         StartCentralSurfacesGoogleModule.class,
         StatusBarEventsModule.class,
-        SmartspaceGoogleModule.class,
         DreamlinerModule.class,
         ReverseChargingModule.class,
         AssistModule.class,
@@ -291,10 +287,4 @@ public abstract class SystemUIGoogleModule {
 
     @Binds
     abstract ControlsTileResourceConfiguration bindControlsTileResourceConfiguration(GoogleControlsTileResourceConfigurationImpl configuration);
-
-    @Provides
-    @SysUISingleton
-    static BcSmartspaceDataPlugin provideBcSmartspaceDataPlugin() {
-        return new BcSmartspaceDataProvider();
-    }
 }
