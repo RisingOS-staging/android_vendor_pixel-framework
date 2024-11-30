@@ -129,6 +129,7 @@ import com.android.systemui.statusbar.PulseExpansionHandler;
 import com.android.systemui.statusbar.SysuiStatusBarStateController;
 import com.android.systemui.statusbar.window.StatusBarWindowController;
 import com.android.systemui.statusbar.window.StatusBarWindowStateController;
+import com.android.systemui.tuner.TunerService;
 import com.android.systemui.util.concurrency.DelayableExecutor;
 import com.android.systemui.util.concurrency.MessageRouter;
 import com.android.systemui.util.kotlin.JavaAdapter;
@@ -275,6 +276,7 @@ public class CentralSurfacesGoogle extends CentralSurfacesImpl {
             UserTracker userTracker,
             Provider<FingerprintManager> fingerprintManager,
             ActivityStarter activityStarter,
+            TunerService tunerService,
             BrightnessMirrorShowingInteractor brightnessMirrorShowingInteractor,
             GlanceableHubContainerController glanceableHubContainerController,
             EmergencyGestureIntentFactory emergencyGestureIntentFactory,
@@ -300,7 +302,7 @@ public class CentralSurfacesGoogle extends CentralSurfacesImpl {
                 screenOffAnimationController, wallpaperController, statusBarHideIconsForBouncerManager, lockscreenShadeTransitionController, featureFlags,
                 keyguardUnlockAnimationController, delayableExecutor, messageRouter, wallpaperManager, startingSurfaceOptional, activityTransitionAnimator,
                 deviceStateManager, wiredChargingRippleController, dreamManager, cameraLauncherLazy, lightRevealScrimViewModelLazy, lightRevealScrim,
-                alternateBouncerInteractor, userTracker, fingerprintManager, activityStarter, brightnessMirrorShowingInteractor,
+                alternateBouncerInteractor, userTracker, fingerprintManager, activityStarter, tunerService, brightnessMirrorShowingInteractor,
                 glanceableHubContainerController, emergencyGestureIntentFactory, sysUiState);
         mContext = context;
         mBatteryStateChangeCallback = new BatteryController.BatteryStateChangeCallback() {
